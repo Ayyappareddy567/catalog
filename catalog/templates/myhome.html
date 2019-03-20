@@ -1,0 +1,57 @@
+<head>
+<title>AC HUB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+</head>
+
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+  <!-- {% for cm in cmr_tpk %}
+    <a href="{{ url_for('showAcs',cmid=cm.id)}}">{{cm.name}}</a><br>
+    {% endfor %} -->
+    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <div class="alert alert-success alert-dismissable animated fadeIn">
+	            {% for message in messages %}
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	            <p class="h4"><strong>{{ message }}</strong></p>
+	            {% endfor %}
+	        </div>
+	    {% endif %}
+	{% endwith %}
+	<center>
+	<h2 style="color:black; margin-top:0px">WELCOME TO AC STORE</h2>
+	</center>
+	<div class="w3-content w3-section" style="max-width:1000px">
+  <img class="mySlides" src="https://www.arenacenter.fi/wp-content/uploads/2017/08/ACStoreHeaderKuva.png" width="1000px" height="500px">
+  <img class="mySlides" src="http://daxueconsulting.com/wp-content/uploads/2012/07/daxue-consulting-air-conditioning.jpg" width="1000px" height="500px">
+  <img class="mySlides" src="https://5.imimg.com/data5/DC/FB/MY-26226407/hospitals-air-conditioner-500x500.jpg" width="1000px" height="500px">
+  <img class="mySlides" src="https://www.consumer-voice.org/wp-content/uploads/2017/08/Split-Ac.jpg" width="1000px" height="500px" style="margin-top:10px"><br>
+  <marquee direction="rtl" onmouseover="this.stop();" onmouseout="this.start();">
+		<font size="4" color="black">&copy;Copyright; 2019, All Rights Are Reserved
+		</font>
+  </marquee>
+	</div>
+    <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+{% endblock content %}
+</div>
